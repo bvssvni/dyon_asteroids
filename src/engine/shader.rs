@@ -19,62 +19,62 @@ implement_vertex!{Vertex, pos, norm}
 
 pub fn register_shader(module: &mut Module) {
     module.add(Arc::new("load_program__name_vshader_fshader".into()),
-        load_program__name_vshader_fshader, PreludeFunction {
+        load_program__name_vshader_fshader, Dfn {
             lts: vec![Lt::Default; 3],
             tys: vec![Type::Text; 3],
             ret: Type::Result(Box::new(Type::Text))
         });
     module.add(Arc::new("program".into()),
-        program, PreludeFunction {
+        program, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::Text],
             ret: Type::Option(Box::new(Type::F64))
         });
     module.add(Arc::new("count_vertex_buffers".into()),
-        count_vertex_buffers, PreludeFunction {
+        count_vertex_buffers, Dfn {
             lts: vec![],
             tys: vec![],
             ret: Type::F64
         });
     module.add(Arc::new("count_index_buffers".into()),
-        count_index_buffers, PreludeFunction {
+        count_index_buffers, Dfn {
             lts: vec![],
             tys: vec![],
             ret: Type::F64
         });
     module.add(Arc::new("create_vertex_buffer__size".into()),
-        create_vertex_buffer__size, PreludeFunction {
+        create_vertex_buffer__size, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::F64],
             ret: Type::Result(Box::new(Type::F64))
         });
     module.add(Arc::new("create_index_buffer__size".into()),
-        create_index_buffer__size, PreludeFunction {
+        create_index_buffer__size, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::F64],
             ret: Type::Result(Box::new(Type::F64))
         });
     module.add(Arc::new("fill_vertex_buffer__buffer_pos_norm".into()),
-        fill_vertex_buffer__buffer_pos_norm, PreludeFunction {
+        fill_vertex_buffer__buffer_pos_norm, Dfn {
             lts: vec![Lt::Default; 3],
             tys: vec![Type::F64, Type::Array(Box::new(Type::Vec4)),
                 Type::Array(Box::new(Type::Vec4))],
             ret: Type::Void
         });
     module.add(Arc::new("fill_index_buffer__buffer_data".into()),
-        fill_index_buffer__buffer_data, PreludeFunction {
+        fill_index_buffer__buffer_data, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64, Type::Array(Box::new(Type::F64))],
             ret: Type::Void
         });
     module.add(Arc::new("clear_depth".into()),
-        clear_depth, PreludeFunction {
+        clear_depth, Dfn {
             lts: vec![],
             tys: vec![],
             ret: Type::Void
         });
     module.add(Arc::new("draw__program_vbuf_ibuf_pos_angle_scale_color_anglex".into()),
-        draw__program_vbuf_ibuf_pos_angle_scale_color_anglex, PreludeFunction {
+        draw__program_vbuf_ibuf_pos_angle_scale_color_anglex, Dfn {
             lts: vec![Lt::Default; 8],
             tys: vec![Type::F64, Type::F64, Type::F64,
                       Type::Vec4, Type::F64, Type::F64,

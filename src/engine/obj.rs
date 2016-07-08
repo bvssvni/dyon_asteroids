@@ -10,121 +10,121 @@ pub type ObjSets = Vec<(Arc<String>, ObjSet)>;
 
 pub fn register_obj(module: &mut Module) {
     module.add(Arc::new("load__material".into()),
-        load__material, PreludeFunction {
+        load__material, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::Text],
             ret: Type::Result(Box::new(Type::Text))
         });
     module.add(Arc::new("material".into()),
-        material, PreludeFunction {
+        material, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::Text],
             ret: Type::Option(Box::new(Type::F64))
         });
     module.add(Arc::new("materials".into()),
-        materials, PreludeFunction {
+        materials, Dfn {
             lts: vec![],
             tys: vec![],
             ret: Type::Array(Box::new(Type::Text))
         });
     module.add(Arc::new("load__obj".into()),
-        load__obj, PreludeFunction {
+        load__obj, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::Text],
             ret: Type::Result(Box::new(Type::Text))
         });
     module.add(Arc::new("obj".into()),
-        obj, PreludeFunction {
+        obj, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::Text],
             ret: Type::Option(Box::new(Type::F64))
         });
     module.add(Arc::new("objs".into()),
-        objs, PreludeFunction {
+        objs, Dfn {
             lts: vec![],
             tys: vec![],
             ret: Type::Array(Box::new(Type::Text))
         });
     module.add(Arc::new("material_library__obj".into()),
-        material_library__obj, PreludeFunction {
+        material_library__obj, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::F64],
             ret: Type::Option(Box::new(Type::Text))
         });
     module.add(Arc::new("object_count__obj".into()),
-        object_count__obj, PreludeFunction {
+        object_count__obj, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::F64],
             ret: Type::F64
         });
     module.add(Arc::new("objects__obj".into()),
-        objects__obj, PreludeFunction {
+        objects__obj, Dfn {
             lts: vec![Lt::Default],
             tys: vec![Type::F64],
             ret: Type::Array(Box::new(Type::Text))
         });
     module.add(Arc::new("vertex_count__obj_object".into()),
-        vertex_count__obj_object, PreludeFunction {
+        vertex_count__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::F64
         });
     module.add(Arc::new("tex_vertex_count__obj_object".into()),
-        tex_vertex_count__obj_object, PreludeFunction {
+        tex_vertex_count__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::F64
         });
     module.add(Arc::new("normal_count__obj_object".into()),
-        normal_count__obj_object, PreludeFunction {
+        normal_count__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::F64
         });
     module.add(Arc::new("geometry_count__obj_object".into()),
-        geometry_count__obj_object, PreludeFunction {
+        geometry_count__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::F64
         });
     module.add(Arc::new("vertex__obj_object_vertex".into()),
-        vertex__obj_object_vertex, PreludeFunction {
+        vertex__obj_object_vertex, Dfn {
             lts: vec![Lt::Default; 3],
             tys: vec![Type::F64; 3],
             ret: Type::Vec4
         });
     module.add(Arc::new("tex_vertex__obj_object_tex_vertex".into()),
-        tex_vertex__obj_object_tex_vertex, PreludeFunction {
+        tex_vertex__obj_object_tex_vertex, Dfn {
             lts: vec![Lt::Default; 3],
             tys: vec![Type::F64; 3],
             ret: Type::Vec4
         });
     module.add(Arc::new("normal__obj_object_normal".into()),
-        normal__obj_object_normal, PreludeFunction {
+        normal__obj_object_normal, Dfn {
             lts: vec![Lt::Default; 3],
             tys: vec![Type::F64; 3],
             ret: Type::Vec4
         });
     module.add(Arc::new("vertices__obj_object".into()),
-        vertices__obj_object, PreludeFunction {
+        vertices__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::Array(Box::new(Type::Vec4))
         });
     module.add(Arc::new("tex_vertices__obj_object".into()),
-        tex_vertices__obj_object, PreludeFunction {
+        tex_vertices__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::Array(Box::new(Type::Vec4))
         });
     module.add(Arc::new("normals__obj_object".into()),
-        normals__obj_object, PreludeFunction {
+        normals__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::Array(Box::new(Type::Vec4))
         });
     module.add(Arc::new("geometry__obj_object".into()),
-        geometry__obj_object, PreludeFunction {
+        geometry__obj_object, Dfn {
             lts: vec![Lt::Default; 2],
             tys: vec![Type::F64; 2],
             ret: Type::Array(Box::new(Type::object()))

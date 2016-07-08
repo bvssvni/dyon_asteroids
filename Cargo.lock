@@ -181,7 +181,7 @@ dependencies = [
 [[package]]
 name = "dyon"
 version = "0.7.0"
-source = "git+https://github.com/PistonDevelopers/dyon/#e3f17b50f1e6fd76b7ff44d209302143d77ea03d"
+source = "git+https://github.com/PistonDevelopers/dyon/#4662d5aad6d0220013c72bc0f2e6c21714ad6440"
 dependencies = [
  "hyper 0.9.7 (registry+https://github.com/rust-lang/crates.io-index)",
  "piston_meta 0.26.1 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -628,7 +628,7 @@ dependencies = [
 [[package]]
 name = "piston-dyon_interactive"
 version = "0.1.0"
-source = "git+https://github.com/PistonDevelopers/dyon/#e3f17b50f1e6fd76b7ff44d209302143d77ea03d"
+source = "git+https://github.com/PistonDevelopers/dyon/#4662d5aad6d0220013c72bc0f2e6c21714ad6440"
 dependencies = [
  "current 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)",
  "dyon 0.7.0 (git+https://github.com/PistonDevelopers/dyon/)",

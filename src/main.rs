@@ -14,7 +14,7 @@ extern crate vecmath;
 
 use sdl2_window::Sdl2Window;
 use sdl2_mixer as mix;
-use glium_graphics::{Glium2d, GliumWindow, OpenGL};
+use glium_graphics::{Glium2d, GliumWindow, GlyphCache, OpenGL};
 use piston::window::WindowSettings;
 use piston::input::Event;
 use dyon::{error, load, Module, Runtime};
@@ -56,6 +56,10 @@ fn main() {
     let mut music_tracks: MusicTracks = vec![];
     let mut sound_tracks: SoundTracks = vec![];
 
+    let font = "assets/fonts/FiraSans-Regular.ttf";
+    let mut glyphs = GlyphCache::new(font, window.clone())
+        .expect("Could not load font");
+
     {
         let window_guard = CurrentGuard::new(window);
         let event_guard: CurrentGuard<Option<Event>> = CurrentGuard::new(&mut e);
@@ -68,9 +72,11 @@ fn main() {
         let index_buffers_guard = CurrentGuard::new(&mut index_buffers);
         let music_tracks_guard = CurrentGuard::new(&mut music_tracks);
         let sound_tracks_guard = CurrentGuard::new(&mut sound_tracks);
+        let glyphs_guard = CurrentGuard::new(&mut glyphs);
         if error(runtime.run(&module)) {
             return;
         }
+        drop(glyphs_guard);
         drop(sound_tracks_guard);
         drop(music_tracks_guard);
         drop(index_buffers_guard);
@@ -117,17 +123,17 @@ fn load_module() -> Option<Module> {
     use std::sync::Arc;
     use dyon_functions::*;
     use dyon_interactive::add_functions;
-    use dyon::{Lt, Module, PreludeFunction, Type};
+    use dyon::{Lt, Module, Dfn, Type};
 
     let mut module = Module::new();
     add_functions::<Window>(&mut module);
-    module.add(Arc::new("draw".into()), draw, PreludeFunction {
+    module.add(Arc::new("draw".into()), draw, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::array()],
         ret: Type::Void
     });
     module.add(Arc::new("next_event".into()),
-        next_event, PreludeFunction {
+        next_event, Dfn {
             lts: vec![],
             tys: vec![],
             ret: Type::Bool
@@ -150,16 +156,18 @@ mod dyon_functions {
 
     pub fn draw(rt: &mut Runtime) -> Result<(), String> {
         use piston::input::*;
-        use glium_graphics::Glium2d;
+        use glium_graphics::{Glium2d, GlyphCache};
         use glium::Frame;
 
         let e = unsafe { &*Current::<Option<Event>>::new() };
         let g2d = unsafe { &mut *Current::<Glium2d>::new() };
         let target = unsafe { &mut *Current::<Frame>::new() };
+        let glyphs = unsafe { &mut *Current::<GlyphCache<Window>>::new() };
+
         if let &Some(ref e) = e {
             if let Some(args) = e.render_args() {
                 g2d.draw(target, args.viewport(), |c, g| {
-                    draw_2d(rt, c, g)
+                    draw_2d(rt, glyphs, c, g)
                 })
             } else {
                 Ok(())

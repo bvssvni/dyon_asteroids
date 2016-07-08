@@ -92,7 +92,7 @@ fn prepare__sound(file: str) -> res {
     println(file)
     index := sound(file)?
     println(index)
-    ok(index)
+    return ok(index)
 }
 
 fn prepare__obj_material(obj: f64, material: str) -> Indices {} {

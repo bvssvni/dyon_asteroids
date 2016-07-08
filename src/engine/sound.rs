@@ -9,42 +9,42 @@ pub type MusicTracks = Vec<(Arc<String>, mix::Music)>;
 pub type SoundTracks = Vec<(Arc<String>, mix::Chunk)>;
 
 pub fn register_sound(module: &mut Module) {
-    module.add(Arc::new("load__music".into()), load__music, PreludeFunction {
+    module.add(Arc::new("load__music".into()), load__music, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::Text],
         ret: Type::Result(Box::new(Type::Text))
     });
-    module.add(Arc::new("load__sound".into()), load__sound, PreludeFunction {
+    module.add(Arc::new("load__sound".into()), load__sound, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::Text],
         ret: Type::Result(Box::new(Type::Text))
     });
-    module.add(Arc::new("music".into()), music, PreludeFunction {
+    module.add(Arc::new("music".into()), music, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::Text],
         ret: Type::Option(Box::new(Type::F64))
     });
-    module.add(Arc::new("sound".into()), sound, PreludeFunction {
+    module.add(Arc::new("sound".into()), sound, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::Text],
         ret: Type::Option(Box::new(Type::F64))
     });
-    module.add(Arc::new("play_forever__music".into()), play_forever__music, PreludeFunction {
+    module.add(Arc::new("play_forever__music".into()), play_forever__music, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::F64],
         ret: Type::Void
     });
-    module.add(Arc::new("play_once__music".into()), play_once__music, PreludeFunction {
+    module.add(Arc::new("play_once__music".into()), play_once__music, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::F64],
         ret: Type::Void
     });
-    module.add(Arc::new("play_once__sound".into()), play_once__sound, PreludeFunction {
+    module.add(Arc::new("play_once__sound".into()), play_once__sound, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::F64],
         ret: Type::Void
     });
-    module.add(Arc::new("set__sound_volume".into()), set__sound_volume, PreludeFunction {
+    module.add(Arc::new("set__sound_volume".into()), set__sound_volume, Dfn {
         lts: vec![Lt::Default; 2],
         tys: vec![Type::F64; 2],
         ret: Type::Void
