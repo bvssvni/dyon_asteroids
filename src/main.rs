@@ -126,7 +126,7 @@ fn load_module() -> Option<Module> {
     use dyon::{Lt, Module, Dfn, Type};
 
     let mut module = Module::new();
-    add_functions::<Window>(&mut module);
+    add_functions::<Window, GlyphCache<Window>>(&mut module);
     module.add(Arc::new("draw".into()), draw, Dfn {
         lts: vec![Lt::Default],
         tys: vec![Type::array()],
